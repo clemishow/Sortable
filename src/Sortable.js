@@ -365,7 +365,7 @@ function Sortable(el, options) {
 		touchStartThreshold: parseInt(window.devicePixelRatio, 10) || 1,
 		forceFallback: false,
 		fallbackClass: 'sortable-fallback',
-		fallbackOnBody: false,
+		fallbackOnElement: null,
 		fallbackTolerance: 0,
 		fallbackOffset: {x: 0, y: 0},
 		supportPointer: Sortable.supportPointer !== false && ('PointerEvent' in window),
@@ -798,7 +798,7 @@ Sortable.prototype = /** @lends Sortable.prototype */ {
 		// Bug if using scale(): https://stackoverflow.com/questions/2637058
 		// Not being adjusted for
 		if (!ghostEl) {
-			let container = this.options.fallbackOnBody ? document.body : rootEl,
+			let container = this.options.fallbackOnElement,
 				rect = getRect(dragEl, true, PositionGhostAbsolutely, true, container),
 				options = this.options;
 
