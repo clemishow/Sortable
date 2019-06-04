@@ -1201,7 +1201,7 @@ function Sortable$1(el, options) {
     touchStartThreshold: parseInt(window.devicePixelRatio, 10) || 1,
     forceFallback: false,
     fallbackClass: 'sortable-fallback',
-    fallbackOnBody: false,
+    fallbackOnElement: null,
     fallbackTolerance: 0,
     fallbackOffset: {
       x: 0,
@@ -1630,7 +1630,7 @@ Sortable$1.prototype =
     // Bug if using scale(): https://stackoverflow.com/questions/2637058
     // Not being adjusted for
     if (!ghostEl) {
-      var container = this.options.fallbackOnBody ? document.body : rootEl,
+      var container = this.options.fallbackOnElement,
           rect = getRect(dragEl, true, PositionGhostAbsolutely, true, container),
           options = this.options; // Position absolutely
 
